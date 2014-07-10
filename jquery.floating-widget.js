@@ -18,7 +18,7 @@
                 floatingClass     = 'floating',
                 pinnedBottomClass = 'pinned-bottom';
             if ($parent.height() > $this.outerHeight(true)) {
-                $window.on('scroll', function () {
+                $window.on('scroll.floating-widget', function () {
                     var y      = $window.scrollTop() + opts.paddingTop,
                         bottom = $parent.offset().top + $parent.height() - $this.outerHeight(true);
                     if (y > top) {
@@ -34,5 +34,9 @@
                 });
             }
         });
+    };
+    $.floatingWidgetDestroy = function () {
+        var $window           = $(window);
+        $window.off('scroll.floating-widget');
     };
 })(jQuery);
